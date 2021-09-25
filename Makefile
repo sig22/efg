@@ -1,20 +1,19 @@
 CUDA_ROOT_DIR=/usr/local/cuda
-CUB=./cub-1.8.0
-CXX = clang++ 
+CXX = /usr/bin/clang++-10
 CXXFLAGS = --std=c++17 -O3 -fPIC -fopenmp -Wall
 LDFLAGS= -fopenmp=libiomp5
 LDLIBS= -lstdc++fs -lglog -lfolly -ldouble-conversion -lcrypto -lboost_program_options
 
 # NVCC compiler options:
-NVCC=nvcc
-NVCC_FLAGS= -lineinfo -O3 -I$(CUB) --extended-lambda --expt-relaxed-constexpr -ccbin=clang++ --std=c++14\
+NVCC=/usr/local/cuda/bin/nvcc
+NVCC_FLAGS= -lineinfo -O3 --expt-relaxed-constexpr -ccbin=$(CXX) --std=c++17\
 	    -Xcompiler -O3,-fPIC,-fopenmp,-Wall,-Wno-unused-function
 NVCC_LIBS=
 
 # CUDA library directory:
 CUDA_LIB_DIR= -L$(CUDA_ROOT_DIR)/lib64
 # CUDA include directory:
-CUDA_INC_DIR= -I$(CUDA_ROOT_DIR)/include -I$(CUB)
+CUDA_INC_DIR= -I$(CUDA_ROOT_DIR)/include
 # CUDA linking libraries:
 CUDA_LINK_LIBS= -lcudart
 
