@@ -19,6 +19,11 @@ This project provides an efficient implementation for traversing large compresse
     - Set `FMT_INSTALL_DIR` to <scratch_path\>/installed/fmt-XXX, where XXX will be a string generated during the folly build process.
  - `make -j` 
 
+## Input Graph Format
+Input graphs need to be in the Compressed Sparse Row (CSR) format consisting of two binary files, `vertex.CSR` and `edge.CSR`. `vertex.CSR` contains row-offsets and is of length `|V| + 1`. `edge.CSR` contains column indices and is of length `|E|`.  Each neighbour list in `edge.CSR` should be in sorted order. The data type for the input graphs should be 64-bits. This is merely done to simplify the input handling and has no bearing on the compression. The reported compression ratio is relative to the optimal CSR size.
+
+Small sample graphs are included in the repository under `sample_graphs`. These can be used for basic tests, but are meaningless for any performance measurements. Larger graphs are available at https://sig22.xyz/public/graphs/.
+
 ## Run
 
 `./ef_bfs sample_graphs/tiny`
@@ -35,3 +40,7 @@ Usage:
       -d [ --nosort ]         Disable the frontier sorting optimisation
       -r [ --root ] arg       Root for the traversal. Random roots will be used if 
                               unspecified
+
+ - The `mapfile` option is useful for comparing the performance between reordered versions of the same graph. For example, the dataset above include graphs in their natural order and graphs reordered with HALO, and the reordered graphs include a mapfile. When running the the traversal on reordered graphs, the mapfile should be passed as an argument to get the same traversals.
+ - The `-d` flag disables the partial frontier sorting optimisation. This should generally not be required, but it saves memory. It can be useful if the compressed graph barely fits in the GPU. For example, this is required for the `uk-2007-05`graph on a 12 GiB GPU.
+ - The `-u`flag enables UVM allocations, which is useful for massive graphs that do not fit even after compression. DO NOT use `-d`along with `-u` as the performance will be very poor without the sorting optimisation in the UVM regime.
