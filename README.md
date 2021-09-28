@@ -50,10 +50,10 @@ BFS results averaged over 100 traversals from random sources:
 
 | Graph              | \|V\| (\|E\|)     | CSR Size<br>(GiB) | EFG Size<br>(GiB) | Performance<br>Titan Xp (12 GiB Mem) | Performance<br>V100 (32 GiB Mem) |
 |--------------------|-------------------|-------------------|-------------------|--------------------------------------|----------------------------------|
-| twitter (d)        | 41.6 M (1.47 B)   | 5.63              | 3.33              | 238 ms<br>5.58 GTEPS                   | 127 ms<br>10.47 GTEPS              |
-| gsh-h-2015 (d)     | 68.66 M (1.8 B)   | 6.97              | 4.73              | 174 ms<br>7.57 GTEPS                   | 120 ms<br>10.94 GTEPS              |
-| com-frndster (u)   | 65.61 M (3.61 B)  | 13.7              | 9.15              | 1006 ms<br>3.59 GTEPS                  | 349 ms<br>10.35 GTEPS              |
-| uk-2007-05 (d)     | 105.22 M (3.74 B) | 14.32             | 10.31             | 212 ms<br>11.06 GTEPS                  | 117 ms<br>20.02 GTEPS              |
-| kron_27_sym (u)    | 63.07 M (4.22 B)  | 15.97             | 9.23              | 997 ms<br>4.27 GTEPS                   | 370 ms<br>11.43 GTEPS              |
+| twitter (d)        | 41.6 M (1.47 B)   | 5.63              | 3.33              | 238 ms<br>5.58 GTEPS                   | 127 ms<br>10.47 GTEPS          |
+| gsh-h-15 (d)       | 68.66 M (1.8 B)   | 6.97              | 4.73              | 174 ms<br>7.57 GTEPS                   | 120 ms<br>10.94 GTEPS          |
+| com-frndster (u)   | 65.61 M (3.61 B)  | 13.7              | 9.15              | 1006 ms<br>3.59 GTEPS                  | 349 ms<br>10.35 GTEPS          |
+| uk-07-05 (d)       | 105.22 M (3.74 B) | 14.32             | 10.31             | 212 ms<br>11.06 GTEPS                  | 117 ms<br>20.02 GTEPS          |
+| kron_27_sym (u)    | 63.07 M (4.22 B)  | 15.97             | 9.23              | 997 ms<br>4.27 GTEPS                   | 370 ms<br>11.43 GTEPS          |
 
 The last three graphs would not fit in memory on the Titan Xp GPU without compression.
