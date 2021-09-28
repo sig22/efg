@@ -44,3 +44,16 @@ Usage:
  - The `mapfile` option is useful for comparing the performance between reordered versions of the same graph. For example, the dataset above include graphs in their natural order and graphs reordered with HALO, and the reordered graphs include a mapfile. When running the the traversal on reordered graphs, the mapfile should be passed as an argument to get the same traversals.
  - The `-d` flag disables the partial frontier sorting optimisation. This should generally not be required, but it saves memory. It can be useful if the compressed graph barely fits in the GPU. For example, this is required for the `uk-2007-05`graph on a 12 GiB GPU.
  - The `-u`flag enables UVM allocations, which is useful for massive graphs that do not fit even after compression. DO NOT use `-d`along with `-u` as the performance will be very poor without the sorting optimisation in the UVM regime.
+
+## Performance
+BFS results averaged over 100 traversals from random sources:
+
+| Graph              | \|V\| (\|E\|)     | CSR Size<br>(GiB) | EFG Size<br>(GiB) | Performance<br>Titan Xp (12 GiB Mem) | Performance<br>V100 (32 GiB Mem) |
+|--------------------|-------------------|-------------------|-------------------|--------------------------------------|----------------------------------|
+| twitter (d)        | 41.6 M (1.47 B)   | 5.63              | 3.33              | 238 ms, 5.58 GTEPS                   | 127 ms, 10.47 GTEPS              |
+| gsh-host-2015 (d)  | 68.66 M (1.8 B)   | 6.97              | 4.73              | 174 ms, 7.57 GTEPS                   | 120 ms, 10.94 GTEPS              |
+| com-friendster (u) | 65.61 M (3.61 B)  | 13.7              | 9.15              | 1006 ms, 3.59 GTEPS                  | 349 ms, 10.35 GTEPS              |
+| uk-2007-05 (d)     | 105.22 M (3.74 B) | 14.32             | 10.31             | 212 ms, 11.06 GTEPS                  | 117 ms, 20.02 GTEPS              |
+| kron_27_sym (u)    | 63.07 M (4.22 B)  | 15.97             | 9.23              | 997 ms, 4.27 GTEPS                   | 370 ms, 11.43 GTEPS              |
+
+The last three graphs would not fit in memory on the Titan Xp GPU without compression.
