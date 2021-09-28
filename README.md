@@ -51,8 +51,8 @@ BFS results averaged over 100 traversals from random sources:
 | Graph              | \|V\| (\|E\|)     | CSR Size<br>(GiB) | EFG Size<br>(GiB) | Performance<br>Titan Xp (12 GiB Mem) | Performance<br>V100 (32 GiB Mem) |
 |--------------------|-------------------|-------------------|-------------------|--------------------------------------|----------------------------------|
 | twitter (d)        | 41.6 M (1.47 B)   | 5.63              | 3.33              | 238 ms, 5.58 GTEPS                   | 127 ms, 10.47 GTEPS              |
-| gsh-host-2015 (d)  | 68.66 M (1.8 B)   | 6.97              | 4.73              | 174 ms, 7.57 GTEPS                   | 120 ms, 10.94 GTEPS              |
-| com-friendster (u) | 65.61 M (3.61 B)  | 13.7              | 9.15              | 1006 ms, 3.59 GTEPS                  | 349 ms, 10.35 GTEPS              |
+| gsh-h-2015 (d)  | 68.66 M (1.8 B)   | 6.97              | 4.73              | 174 ms, 7.57 GTEPS                   | 120 ms, 10.94 GTEPS              |
+| com-frndster (u) | 65.61 M (3.61 B)  | 13.7              | 9.15              | 1006 ms, 3.59 GTEPS                  | 349 ms, 10.35 GTEPS              |
 | uk-2007-05 (d)     | 105.22 M (3.74 B) | 14.32             | 10.31             | 212 ms, 11.06 GTEPS                  | 117 ms, 20.02 GTEPS              |
 | kron_27_sym (u)    | 63.07 M (4.22 B)  | 15.97             | 9.23              | 997 ms, 4.27 GTEPS                   | 370 ms, 11.43 GTEPS              |
 
